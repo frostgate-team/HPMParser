@@ -1,11 +1,17 @@
 from os import listdir
 from os.path import isfile, join
 
+VERBOSE = False
+
 mypath = "out"
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-print(onlyfiles)
+
+if VERBOSE:
+	print(onlyfiles)
 
 final_list = []
+
+print("Trimming...")
 
 for f in onlyfiles:
 	with open(mypath + "/" + f) as file1:
@@ -23,3 +29,5 @@ f = open("out/meshlist.txt", "w")
 for entry in final_list:
 	f.write(entry)
 f.close()
+
+print("Done.")
